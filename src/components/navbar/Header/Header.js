@@ -1,7 +1,7 @@
 import React from "react";
 import auth from "../../../firebase.init";
 import { Link } from "react-router-dom";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { useAuthState, useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 
 const Header = () => {
@@ -9,6 +9,12 @@ const [user] = useAuthState(auth)
 const HandleLogout=() =>{
   signOut(auth)
 }
+const [
+  signInWithEmailAndPassword,
+  user1,
+  loading,
+  error,
+] = useSignInWithEmailAndPassword(auth);
   return (
     <div>
       <div class="navbar bg-base-100">
