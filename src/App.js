@@ -7,6 +7,8 @@ import { Route, Routes } from "react-router-dom";
 import Inventory from "./components/Inventory/Inventory";
 import Login from "./components/login/Login";
 import SignUp from "./components/login/SignUp";
+import MyInventory from "./components/Inventory/myinventory/MyInventory";
+import AllInventory from "./components/Inventory/allInventory/AllInventory";
 
 function App() {
   return (
@@ -14,9 +16,12 @@ function App() {
       <Header />
       <Routes>
         <Route path="*" element={<Home />} />
-        <Route path="inventory" element={<Inventory />} />
+        <Route path="inventory" element={<Inventory />}>
+          <Route index element={<MyInventory />}></Route>
+          <Route path="AllInventory" element={<AllInventory />}></Route>
+        </Route>
         <Route path="login" element={<Login />} />
-        <Route path="/signup" element={<SignUp/>}/>
+        <Route path="/signup" element={<SignUp />} />
       </Routes>
       <Footer />
     </div>

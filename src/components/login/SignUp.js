@@ -1,6 +1,6 @@
 import React from 'react';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import google from "../../assets/icon/google.svg";
 import auth from '../../firebase.init';
 
@@ -16,6 +16,12 @@ const SignUp = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
     createUserWithEmailAndPassword(email, password);
+  }
+  const location = useLocation();
+  const navigate = useNavigate();
+  let from = location.state?.from?.pathname || "/";
+  if (user ) {
+    navigate(from, { replace: true });
   }
     return (
     <div className=" ">
